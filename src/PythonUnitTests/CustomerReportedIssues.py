@@ -398,14 +398,39 @@ class Test_CustomerReportedIssues(unittest.TestCase):
          print(y);
          print(idx);
 
-    def test_Rainyl_2a(self):
+    def test_Rainyl_3(self):
 
-            xp = new float[] { 1, 2, 3 };
-            var fp = new float[] { 3, 2, 0 };
+        a = np.asarray([[1, 2, 3, 4, 5], [10, 11, 12, 13, 14]]);
+        b = a[:, ::-1]
+        print(b);
+       
+        
+        print("output:");print(b[0, 0]);print(b[0, 1]);print(b[0, 2]);print(b[0, 3]);print(b[0, 4]);
+        print("output:");print(b[1, 0]);print(b[1, 1]);print(b[1, 2]);print(b[1, 3]);print(b[1, 4]);
 
-            var a = np.interp(2.5, xp, fp);
+    def test_Rainyl_3a(self):
 
+        a = np.asarray([[1, 2, 3, 4, 5], [10, 11, 12, 13, 14]]);
+        b = a[::-1, ::-1]
+        print(b);
+       
+        
+        print("output:");print(b[0, 0]);print(b[0, 1]);print(b[0, 2]);print(b[0, 3]);print(b[0, 4]);
+        print("output:");print(b[1, 0]);print(b[1, 1]);print(b[1, 2]);print(b[1, 3]);print(b[1, 4]);
 
+    def test_Rainyl_3b(self):
+
+        a = np.asarray([[1, 2, 3, 4, 5], [10, 11, 12, 13, 14]]);
+        b = a[::-2, ::-2]
+        print(b);
+       
+        print("output:");print(b[0, 0]);print(b[0, 1]);print(b[0, 2]);
+
+        b[0, 0] = 88;
+        b[0, 1] = 77;
+        b[0, 2] = 66;
+
+        print(a)
       
 if __name__ == '__main__':
     unittest.main()
