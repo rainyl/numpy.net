@@ -431,6 +431,98 @@ class Test_CustomerReportedIssues(unittest.TestCase):
         b[0, 2] = 66;
 
         print(a)
+
+
+    def test_Taz145_1(self):
+
+        arr1 = np.array([0,1,1,0,1,1,1,0,0,0,1,1,0,0,0,0,1,1,1,1,1,0,1,0]).reshape((2, 3, 4));
+        arr2 = np.arange(24).reshape((2, 3, 4));
+
+        print(arr2)
+        arr2 = np.rot90(arr2, k=2, axes= (0, 2));
+
+        print(arr2)
+        arr2[arr1 > 0] = 0;
+        print(arr2)
+
+    def test_Taz145_1a(self):
+
+        arr1 = np.array([0,1,1,0,1,1,1,0,0,0,1,1,0,0,0,0,1,1,1,1,1,0,1,0]).reshape((2, 3, 4));
+        arr2 = np.arange(24).reshape((2, 3, 4));
+
+        print(arr2)
+        arr2 = arr2[::-1]
+        print(arr2)
+        arr2[arr1 > 0] = 0;
+        print(arr2)
+
+    def test_Taz145_2(self):
+
+        arr1 = np.array([0,1,1,0,1,1,1,0,0,0,1,1,0,0,0,0,1,1,1,1,1,0,1,0]).reshape((2, 3, 4));
+        arr2 = np.arange(24).reshape((2, 3, 4));
+
+        print(arr2)
+        arr2 = np.rot90(arr2, k=2, axes= (0, 2));
+
+        print(arr2)
+        arr3 = arr2[arr1 > 0];
+        print(arr3)
+
+    def test_Taz145_2a(self):
+
+        arr1 = np.array([0,1,1,0,1,1,1,0,0,0,1,1,0,0,0,0,1,1,1,1,1,0,1,0]).reshape((2, 3, 4));
+        arr2 = np.arange(24).reshape((2, 3, 4));
+
+        print(arr2)
+        arr2 = arr2[::-1]
+
+        print(arr2)
+        arr3 = arr2[arr1 > 0];
+        print(arr3)
+
+    def test_Taz145_3(self):
+
+        arr1 = np.array([2,4,6], dtype=np.intp);
+        arr2 = np.arange(24);
+
+        arr2 = arr2[::-1];
+        print(arr2)
+        arr3 = arr2[arr1];
+        print(arr3)
+
+    def test_Taz145_3a(self):
+
+        arr2 = np.arange(24).reshape((2, 3, 4));
+        print(arr2)
+
+        arr2 = np.rot90(arr2, k=2, axes= (0, 2));
+        print(arr2)
+
+        arr3 = arr2[np.array([0, 1, -1, -2])];
+        print("arr3");
+        print(arr3)
+
+    def test_Taz145_4(self):
+
+        arr2 = np.arange(24).reshape((2, 3, 4));
+        arr2 = np.rot90(arr2, k=2, axes= (0, 2));
+
+        arr3 = np.array(arr2.tobytes());
+        print(arr3)
+
+        arr4 = np.array(arr2.tobytes(order='F'));
+        print(arr4)
+
+    def test_Taz145_4b(self):
+
+        arr2 = np.arange(24).reshape((2, 3, 4));
+        arr2 = arr2[::-1];
+
+        arr3 = np.array(arr2.tobytes());
+        print(arr3)
+
+        arr4 = np.array(arr2.tobytes(order='F'));
+        print(arr4)
       
 if __name__ == '__main__':
     unittest.main()
