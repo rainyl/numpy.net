@@ -52,5 +52,25 @@ namespace NumpyLib
         private static npy_intp maxNumericOpParallelSize = 1000;
         private static npy_intp maxCopyFieldParallelSize = 1000;
         private static npy_intp maxSortOperationParallelSize = 1000;
+
+        [ThreadStatic]
+        internal static bool ?enableTryCatchOnCalculations = null;
+
+        internal static bool getEnableTryCatchOnCalculations
+        {
+            get
+            {
+                if (numpyinternal.enableTryCatchOnCalculations.HasValue)
+                    return numpyinternal.enableTryCatchOnCalculations.Value;
+                numpyinternal.enableTryCatchOnCalculations = true;
+                return numpyinternal.enableTryCatchOnCalculations.Value;
+            }
+        }
+
+        internal static string GenerateTryCatchExceptionMessage(string ExMessage)
+        {
+            string Message = string.Format("This operation caused exception: {0}. Set np.tuning.EnableTryCatchOnCalculations = true to handle this exception cleanly.", ExMessage);
+            return Message;
+        }
     }
 }
